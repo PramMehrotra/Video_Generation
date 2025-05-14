@@ -1,0 +1,102 @@
+Steps to Generate Videos Using the AI Video Generation Tool
+=====================================================
+
+1. Setup and Installation
+------------------------
+a. Install Python 3.7 or higher if not already installed
+b. Install required dependencies:
+   pip install -r requirements.txt
+c. Create necessary directories:
+   - output/ (for generated videos)
+   - metadata/ (for video metadata)
+
+2. News Article Collection
+-------------------------
+a. The program uses GDELT Project API to fetch trending news
+b. It searches for articles from major news sources (news.com, reuters.com, apnews.com)
+c. For each article, it collects:
+   - Title
+   - Description
+   - URL
+   - Image URL
+   - Publication date
+
+3. Script Generation
+-------------------
+a. For each news article, a script is generated using templates
+b. The script includes:
+   - Breaking news introduction
+   - Main story description
+   - Closing statement
+c. Timestamps are created for text overlays:
+   - 0s: Breaking news title
+   - 5s: Main story description
+   - 10s: Closing statement
+
+4. Video Creation
+----------------
+a. Background Image Processing:
+   - Downloads the article's image
+   - Resizes to 1920x1080 resolution
+   - Centers the image on a black background
+   - If no image is available, uses a black background
+
+b. Text Overlay Creation:
+   - Creates text clips for each timestamp
+   - Uses white text with black outline for visibility
+   - Positions text in the center of the screen
+   - Each text appears for 5 seconds
+
+c. Video Assembly:
+   - Combines background image with text overlays
+   - Sets video duration to 60 seconds
+   - Uses 24fps frame rate
+   - Exports as MP4 using H.264 codec
+
+5. Output and Metadata
+---------------------
+a. Generated videos are saved in the output/ directory
+b. Filename format: video_YYYYMMDD-HHMMSS.mp4
+c. Metadata is saved in the metadata/ directory
+d. Metadata includes:
+   - Article information
+   - Script content
+   - Video path
+   - Generation timestamp
+
+6. Running the Program
+---------------------
+a. Execute the main script:
+   python main.py
+b. The program will:
+   - Fetch 3 trending news articles
+   - Generate a video for each article
+   - Save videos and metadata
+   - Display progress in the console
+
+7. Output Files
+--------------
+a. Video files:
+   - Location: output/
+   - Format: MP4
+   - Resolution: 1920x1080
+   - Duration: 60 seconds
+
+b. Metadata files:
+   - Location: metadata/
+   - Format: JSON
+   - Contains article and video information
+
+8. Troubleshooting
+-----------------
+a. If no videos are generated:
+   - Check internet connection
+   - Verify Python and dependencies are installed
+   - Check if output/ directory exists
+   - Review console for error messages
+
+b. If videos are generated but have issues:
+   - Check if article images are accessible
+   - Verify text is readable
+   - Ensure sufficient disk space
+   - Check video player compatibility 
